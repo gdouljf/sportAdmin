@@ -94,8 +94,8 @@ public class SysUserController {
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result delete(@RequestBody Long[] ids){
-        sysUserService.removeByIds(Arrays.asList(ids));
         sysUserRoleService.remove(new LambdaQueryWrapper<SysUserRole>().in(SysUserRole::getUserId,ids));
+        sysUserService.removeByIds(Arrays.asList(ids));
         return Result.ok();
     }
 
