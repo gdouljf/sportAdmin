@@ -48,6 +48,8 @@ public class SysUser implements Serializable {
 
     private Integer status;
 
+    private String phonenumber;
+
     @TableField(exist = false)
     private List<SysRole> sysRoles = new ArrayList<>();
 

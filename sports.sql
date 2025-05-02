@@ -382,6 +382,7 @@ CREATE TABLE `sys_user`  (
   `updated` datetime(0) NULL DEFAULT NULL,
   `last_login` datetime(0) NULL DEFAULT NULL,
   `status` int(0) NOT NULL,
+  `phonenumber` varchar(11) default '' null comment '手机号码',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UK_USERNAME`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
