@@ -86,12 +86,12 @@ public class SysRoleController {
     @PreAuthorize("hasAuthority('sys:role:delete')")
     @Transactional
     public Result delete(@RequestBody Long[] roleIds){
-        boolean flag = sysRoleService.removeByIds(Arrays.asList(roleIds));
         sysUserRoleService.remove(new LambdaQueryWrapper<SysUserRole>().in(SysUserRole::getRoleId,roleIds));
         sysRoleMenuService.remove(new LambdaQueryWrapper<SysRoleMenu>().in(SysRoleMenu::getRoleId,roleIds));
         Arrays.stream(roleIds).forEach(id -> {
             sysUserService.clearUserAuthorityInfoByRoleId(id);
         });
+        boolean flag = sysRoleService.removeByIds(Arrays.asList(roleIds));
         return flag ? Result.ok() : Result.error();
     }
 
