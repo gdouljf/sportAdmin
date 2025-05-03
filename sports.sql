@@ -390,12 +390,12 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', '123@qq.com', '广州', '2021-01-12 22:13:53', '2023-05-29 09:08:51', '2020-12-30 08:38:37', 1);
-INSERT INTO `sys_user` VALUES (2, 'normal', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'test@qq.com', NULL, '2021-01-30 08:20:22', '2023-05-28 18:24:59', NULL, 1);
-INSERT INTO `sys_user` VALUES (4, 'equip', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'sdas@qq.com', NULL, '2022-12-27 10:27:50', '2023-05-28 19:39:41', NULL, 1);
-INSERT INTO `sys_user` VALUES (6, 'place', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'place@qq.com', NULL, '2023-05-28 19:13:32', '2023-05-28 19:36:14', NULL, 1);
-INSERT INTO `sys_user` VALUES (7, 'comp', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'sdasds@qq.com', NULL, '2023-05-28 19:41:54', '2023-05-28 19:42:12', NULL, 1);
-INSERT INTO `sys_user` VALUES (9, 'test', '$2a$10$2sJki8vK8yWaKvJwUsR9VOf/EA1Fr6qH.C/4tR75w98IIn4lK8qe6', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', '222@qq.com', NULL, '2023-05-29 10:11:15', NULL, NULL, 1);
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', '123@qq.com', '广州', '2021-01-12 22:13:53', '2023-05-29 09:08:51', '2020-12-30 08:38:37', 1, '');
+INSERT INTO `sys_user` VALUES (2, 'normal', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'test@qq.com', NULL, '2021-01-30 08:20:22', '2023-05-28 18:24:59', NULL, 1, '');
+INSERT INTO `sys_user` VALUES (4, 'equip', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'sdas@qq.com', NULL, '2022-12-27 10:27:50', '2023-05-28 19:39:41', NULL, 1, '');
+INSERT INTO `sys_user` VALUES (6, 'place', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'place@qq.com', NULL, '2023-05-28 19:13:32', '2023-05-28 19:36:14', NULL, 1, '');
+INSERT INTO `sys_user` VALUES (7, 'comp', '$2a$10$usDc05oX7v7p78eY.g7is..cN6n8o84gz4xESe.YLun8k/hy7M/4q', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', 'sdasds@qq.com', NULL, '2023-05-28 19:41:54', '2023-05-28 19:42:12', NULL, 1, '');
+INSERT INTO `sys_user` VALUES (9, 'test', '$2a$10$2sJki8vK8yWaKvJwUsR9VOf/EA1Fr6qH.C/4tR75w98IIn4lK8qe6', 'https://image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/5a9f48118166308daba8b6da7e466aab.jpg', '222@qq.com', NULL, '2023-05-29 10:11:15', NULL, NULL, 1, '');
 
 -- ----------------------------
 -- Table structure for sys_user_role
