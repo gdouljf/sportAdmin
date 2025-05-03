@@ -85,7 +85,6 @@ public class SysRoleController {
 
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:role:delete')")
-    @Transactional
     public Result delete(@RequestBody Long[] roleIds){
         // 角色相对于用户和菜单，是不能直接删除的
         // 检查是否有用户关联和菜单关联

@@ -90,13 +90,9 @@ public class SysUserController {
         return flag ? Result.ok() : Result.error();
     }
 
-    @Transactional
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result delete(@RequestBody Long[] ids){
-        // 用户相对于角色是可以直接删除的
-        // 先删除角色关联
-        sysUserRoleService.remove(new LambdaQueryWrapper<SysUserRole>().in(SysUserRole::getUserId,ids));
         // 判断是否还有其他关联信息
         try{
             sysUserService.removeByIds(Arrays.asList(ids));

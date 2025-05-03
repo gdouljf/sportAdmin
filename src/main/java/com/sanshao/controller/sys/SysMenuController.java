@@ -8,6 +8,7 @@ import com.sanshao.entity.SysUser;
 import com.sanshao.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -92,10 +93,14 @@ public class SysMenuController {
         if (count > 0){
             return Result.error().message("请删除子菜单");
         }
+        boolean flag = false;
+        try {
+            flag = sysMenuService.removeById(id);
+        } catch (Exception e) {
+            return Result.error().message("菜单有角色关联，删除失败");
+        }
         //清楚所有与该菜单相关的权限缓存
         sysUserService.clearUserAuthorityInfoByMenuId(id);
-        sysRoleMenuService.remove(new LambdaQueryWrapper<SysRoleMenu>().eq(SysRoleMenu::getMenuId,id));
-        boolean flag = sysMenuService.removeById(id);
         return flag ? Result.ok() : Result.error();
     }
 }
