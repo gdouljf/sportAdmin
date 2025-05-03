@@ -98,9 +98,13 @@ public class SysPlaceController {
      */
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:place:delete')")
-    @Transactional
     public Result delete(@RequestBody Long[] placeIds) {
-        boolean flag = sysPlaceService.removeByIds(Arrays.asList(placeIds));
+        boolean flag;
+        try {
+            flag = sysPlaceService.removeByIds(Arrays.asList(placeIds));
+        } catch (Exception e) {
+            return Result.error().message("该场地信息有信息留存，无法删除");
+        }
         return flag ? Result.ok() : Result.error();
     }
 
