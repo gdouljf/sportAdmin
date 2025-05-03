@@ -73,9 +73,13 @@ public class SysCompetitionController {
 
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:competition:delete')")
-    @Transactional
     public Result delete(@RequestBody Long[] competitionIds){
-        boolean flag = sysCompetitionService.removeByIds(Arrays.asList(competitionIds));
+        boolean flag;
+        try {
+            flag = sysCompetitionService.removeByIds(Arrays.asList(competitionIds));
+        } catch (Exception e) {
+            return Result.error().message("该赛事信息有信息留存，无法删除");
+        }
         return flag ? Result.ok() : Result.error();
     }
 }
