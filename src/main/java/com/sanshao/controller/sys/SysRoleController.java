@@ -16,6 +16,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -86,12 +87,17 @@ public class SysRoleController {
     @PreAuthorize("hasAuthority('sys:role:delete')")
     @Transactional
     public Result delete(@RequestBody Long[] roleIds){
-        sysUserRoleService.remove(new LambdaQueryWrapper<SysUserRole>().in(SysUserRole::getRoleId,roleIds));
-        sysRoleMenuService.remove(new LambdaQueryWrapper<SysRoleMenu>().in(SysRoleMenu::getRoleId,roleIds));
+        // 检查是否有用户关联和菜单关联
+        boolean flag;
+        try {
+            flag = sysRoleService.removeByIds(Arrays.asList(roleIds));
+        } catch (Exception e) {
+            // 有关联关系，无法删除
+            return Result.error().message("该角色下有用户，无法删除");
+        }
         Arrays.stream(roleIds).forEach(id -> {
             sysUserService.clearUserAuthorityInfoByRoleId(id);
         });
-        boolean flag = sysRoleService.removeByIds(Arrays.asList(roleIds));
         return flag ? Result.ok() : Result.error();
     }
 
