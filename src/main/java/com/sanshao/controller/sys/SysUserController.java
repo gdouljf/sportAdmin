@@ -94,8 +94,17 @@ public class SysUserController {
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result delete(@RequestBody Long[] ids){
+        // 用户相对于角色是可以直接删除的
+        // 先删除角色关联
         sysUserRoleService.remove(new LambdaQueryWrapper<SysUserRole>().in(SysUserRole::getUserId,ids));
-        sysUserService.removeByIds(Arrays.asList(ids));
+        // 判断是否还有其他关联信息
+        try{
+            sysUserService.removeByIds(Arrays.asList(ids));
+        }catch (Exception e){
+            // 还有其他关联信息，无法删除，回滚删除角色关联信息
+            return Result.error().message("该用户有信息留存，无法删除");
+        }
+        // 没有其他关联信息，删除成功
         return Result.ok();
     }
 
