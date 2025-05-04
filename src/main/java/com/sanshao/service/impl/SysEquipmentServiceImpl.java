@@ -1,6 +1,6 @@
 package com.sanshao.service.impl;
 
-import com.sanshao.entity.Equipment;
+import com.sanshao.entity.SysEquipment;
 import com.sanshao.mapper.SysEquipmentMapper;
 import com.sanshao.service.SysEquipmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class SysEquipmentServiceImpl extends ServiceImpl<SysEquipmentMapper, Equipment> implements SysEquipmentService {
+public class SysEquipmentServiceImpl extends ServiceImpl<SysEquipmentMapper, SysEquipment> implements SysEquipmentService {
 
 }

@@ -1,6 +1,6 @@
 package com.sanshao.mapper;
 
-import com.sanshao.entity.Equipment;
+import com.sanshao.entity.SysEquipment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,6 +9,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  */
-public interface SysEquipmentMapper extends BaseMapper<Equipment> {
+public interface SysEquipmentMapper extends BaseMapper<SysEquipment> {
 
 }

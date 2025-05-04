@@ -3,7 +3,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sanshao.common.lang.Result;
-import com.sanshao.entity.Equipment;
+import com.sanshao.entity.SysEquipment;
 import com.sanshao.entity.SysUser;
 import com.sanshao.entity.UserBorrow;
 import com.sanshao.entity.UserRepairs;
@@ -91,9 +91,9 @@ public class SysEquipmentBorrowController {
     @PreAuthorize("hasAuthority('sys:borrow:list')")
     public Result passOrNotPass(@Validated @RequestBody UserBorrow userBorrow){
         if(userBorrow.getStatus() == 2){
-            Equipment equipment = sysEquipmentService.getById(userBorrow.getEquipmentid());
-            equipment.setSurplus(equipment.getSurplus() + userBorrow.getNumber());
-            sysEquipmentService.updateById(equipment);
+            SysEquipment sysEquipment = sysEquipmentService.getById(userBorrow.getEquipmentid());
+            sysEquipment.setSurplus(sysEquipment.getSurplus() + userBorrow.getNumber());
+            sysEquipmentService.updateById(sysEquipment);
         }
         boolean flag = userBorrowService.updateById(userBorrow);
         return flag ? Result.ok() : Result.error();
@@ -115,9 +115,9 @@ public class SysEquipmentBorrowController {
     public Result back(@PathVariable("id") Long id) throws IOException {
         UserBorrow borrow = userBorrowService.getById(id);
         borrow.setStatus(4);
-        Equipment equipment = sysEquipmentService.getById(borrow.getEquipmentid());
-        equipment.setSurplus(equipment.getSurplus() + borrow.getNumber());
-        boolean flag = userBorrowService.updateById(borrow) && sysEquipmentService.updateById(equipment);
+        SysEquipment sysEquipment = sysEquipmentService.getById(borrow.getEquipmentid());
+        sysEquipment.setSurplus(sysEquipment.getSurplus() + borrow.getNumber());
+        boolean flag = userBorrowService.updateById(borrow) && sysEquipmentService.updateById(sysEquipment);
         return flag ? Result.ok() : Result.error();
     }
 

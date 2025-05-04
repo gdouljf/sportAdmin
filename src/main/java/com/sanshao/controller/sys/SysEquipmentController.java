@@ -3,7 +3,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sanshao.common.lang.Result;
-import com.sanshao.entity.Equipment;
+import com.sanshao.entity.SysEquipment;
 import com.sanshao.service.SysEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,16 +37,16 @@ public class SysEquipmentController {
     @GetMapping("list")
     @PreAuthorize("hasAuthority('sys:equipment:list')")
     public Result list(String name){
-        Page<Equipment> pageData = sysEquipmentService.page(getPage(),new LambdaQueryWrapper<Equipment>().like(StrUtil.isNotBlank(name), Equipment::getName,name));
+        Page<SysEquipment> pageData = sysEquipmentService.page(getPage(),new LambdaQueryWrapper<SysEquipment>().like(StrUtil.isNotBlank(name), SysEquipment::getName,name));
         return Result.ok().data("pageData",pageData);
     }
 
     @PostMapping("add")
     @PreAuthorize("hasAuthority('sys:equipment:add')")
-    public Result add(@Validated @RequestBody Equipment equipment){
-        equipment.setCreated(new Date());
-        equipment.setSurplus(equipment.getTotal());
-        boolean flag = sysEquipmentService.save(equipment);
+    public Result add(@Validated @RequestBody SysEquipment sysEquipment){
+        sysEquipment.setCreated(new Date());
+        sysEquipment.setSurplus(sysEquipment.getTotal());
+        boolean flag = sysEquipmentService.save(sysEquipment);
         return flag ? Result.ok() : Result.error();
     }
 
@@ -54,8 +54,8 @@ public class SysEquipmentController {
 
     @PostMapping("update")
     @PreAuthorize("hasAuthority('sys:equipment:update')")
-    public Result update(@Validated @RequestBody Equipment equipment){
-        boolean flag = sysEquipmentService.updateById(equipment);
+    public Result update(@Validated @RequestBody SysEquipment sysEquipment){
+        boolean flag = sysEquipmentService.updateById(sysEquipment);
         return flag ? Result.ok() : Result.error();
     }
 
@@ -72,8 +72,8 @@ public class SysEquipmentController {
     @GetMapping("info/{id}")
     @PreAuthorize("hasAuthority('sys:equipment:list')")
     public Result info(@PathVariable("id") Long id){
-        Equipment equipment = sysEquipmentService.getById(id);
-        return Result.ok().data("info",equipment);
+        SysEquipment sysEquipment = sysEquipmentService.getById(id);
+        return Result.ok().data("info", sysEquipment);
     }
 
 

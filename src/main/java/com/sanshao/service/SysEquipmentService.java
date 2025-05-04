@@ -1,6 +1,6 @@
 package com.sanshao.service;
 
-import com.sanshao.entity.Equipment;
+import com.sanshao.entity.SysEquipment;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -8,6 +8,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *  服务类
  * </p>
  */
-public interface SysEquipmentService extends IService<Equipment> {
+public interface SysEquipmentService extends IService<SysEquipment> {
 
 }

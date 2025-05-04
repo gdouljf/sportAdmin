@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="SysEquipment对象", description="")
-public class Equipment implements Serializable {
+public class SysEquipment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
