@@ -110,7 +110,7 @@ CREATE TABLE `sys_competition`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK_competition_userId`(`userId`) USING BTREE,
   CONSTRAINT `FK_competition_userId` FOREIGN KEY (`userId`) REFERENCES `sys_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1661035839670296582 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_competition

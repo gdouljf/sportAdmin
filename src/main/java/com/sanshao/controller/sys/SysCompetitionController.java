@@ -52,7 +52,6 @@ public class SysCompetitionController {
     @PreAuthorize("hasAuthority('sys:competition:save')")
     public Result save(@Validated @RequestBody SysCompetition sysCompetition){
         sysCompetition.setCreated(new Date());
-        sysCompetition.setId((long) (sysCompetitionService.count() + 1));
         boolean flag = sysCompetitionService.save(sysCompetition);
         return flag ? Result.ok() : Result.error();
     }
