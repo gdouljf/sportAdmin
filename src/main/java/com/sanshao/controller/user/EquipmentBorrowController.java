@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sanshao.common.lang.Result;
 import com.sanshao.entity.SysCompensate;
-import com.sanshao.entity.Equipment;
+import com.sanshao.entity.SysEquipment;
 import com.sanshao.entity.UserBorrow;
 import com.sanshao.entity.UserRepairs;
 import com.sanshao.server.WebSocketServer;
@@ -55,12 +55,12 @@ public class EquipmentBorrowController {
             return Result.error().message("您在失信名单中，无法租借器材");
         }
         userBorrow.setCreated(new Date());
-        Equipment equipment = sysEquipmentService.getById(userBorrow.getEquipmentid());
+        SysEquipment sysEquipment = sysEquipmentService.getById(userBorrow.getEquipmentid());
         boolean update = false;
-        if (equipment.getSurplus() >= userBorrow.getNumber()){
-            userBorrow.setTotalmoney(equipment.getMoney() *( (userBorrow.getEndtime().getTime() - userBorrow.getStarttime().getTime()) / (1000 *60 * 60 *24)+1));
-            equipment.setSurplus(equipment.getSurplus() - userBorrow.getNumber());
-            update = sysEquipmentService.updateById(equipment);
+        if (sysEquipment.getSurplus() >= userBorrow.getNumber()){
+            userBorrow.setTotalmoney(sysEquipment.getMoney() *( (userBorrow.getEndtime().getTime() - userBorrow.getStarttime().getTime()) / (1000 *60 * 60 *24)+1));
+            sysEquipment.setSurplus(sysEquipment.getSurplus() - userBorrow.getNumber());
+            update = sysEquipmentService.updateById(sysEquipment);
         }else{
             return Result.error().message("租用器材不足");
         }
