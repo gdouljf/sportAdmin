@@ -18,13 +18,18 @@
           >新增器材</el-button
         >
       </el-form-item>
-      <!--
+
       <el-form-item>
         <el-popconfirm title="这是确定批量删除吗？" @confirm="delHandle(null)">
-          <el-button type="danger" slot="reference" :disabled="delBtlStatus" v-if="hasAuth('sys:equipment:delete')">批量删除</el-button>
+          <el-button
+            type="danger"
+            slot="reference"
+            :disabled="delBtlStatus"
+            v-if="hasAuth('sys:equipment:delete')"
+            >批量删除</el-button
+          >
         </el-popconfirm>
       </el-form-item>
-      -->
     </el-form>
 
     <el-table
@@ -36,18 +41,10 @@
       stripe
       @selection-change="handleSelectionChange"
     >
-      <!--
-      <el-table-column
-          type="selection"
-          width="55">
-      </el-table-column>
+      <el-table-column type="selection" width="55"> </el-table-column>
 
-      <el-table-column
-          label="器材id"
-          width="120"
-          prop="id">
-      </el-table-column>
-        -->
+      <!-- <el-table-column label="器材id" width="120" prop="id"> </el-table-column> -->
+
       <el-table-column label="器材名称" width="120" prop="name">
       </el-table-column>
 
@@ -207,15 +204,13 @@ export default {
       let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
       return year + "-" + month + "-" + day;
     },
-    /*
-    handleSelectionChange(val) {
-      console.log("勾选")
-      console.log(val)
-      this.multipleSelection = val;
-      this.delBtlStatus = val.length == 0
-    },
 
-     */
+    handleSelectionChange(val) {
+      console.log("勾选");
+      console.log(val);
+      this.multipleSelection = val;
+      this.delBtlStatus = val.length == 0;
+    },
 
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);

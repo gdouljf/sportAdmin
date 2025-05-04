@@ -61,9 +61,13 @@ public class SysEquipmentController {
 
     @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:equipment:delete')")
-    @Transactional
     public Result delete(@RequestBody Long[] equipmentIds){
-        boolean flag = sysEquipmentService.removeByIds(Arrays.asList(equipmentIds));
+        boolean flag;
+        try {
+            flag = sysEquipmentService.removeByIds(Arrays.asList(equipmentIds));
+        } catch (Exception e) {
+            return Result.error().message("该器材仍有信息关联，无法删除");
+        }
         return flag ? Result.ok() : Result.error();
     }
 
